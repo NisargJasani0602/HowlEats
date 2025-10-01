@@ -150,11 +150,23 @@ Admin panel: `http://localhost:5174`
 
 ---
 
-## 📸 Screenshots (recommended to add)
-- Homepage & categories
-- Cart & checkout (with Razorpay popup)
-- Orders page (tracking)
-- Admin dashboard
+## 📸 Screenshots
+### Home Page, Login Page & Explore Page
+![Home Page](images/home.png)
+![Login Page](images/login.png)
+![Explore Page](images/explore.png)
+
+### Cart & Checkout (with razorpay popup)
+![Cart](images/cart.png)
+![Checkout](images/checkout.png)
+![Payments](images/payment.png)
+![Payment Success](paymentSuccess/cart.png)
+![User Order](images/userOrders.png)
+
+### Admin dashboard
+![Add Food](images/addFood.png)
+![List Foods](images/listFoods.png)
+![List Orders](images/allOrders.png)
 
 ---
 
