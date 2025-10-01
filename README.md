@@ -1,4 +1,4 @@
-# 🍔 HowlEats — Campus Food Ordering System
+# 🍔🐺 HowlEats — Campus Food Ordering System
 
 HowlEats is a full-stack food-ordering platform (similar to Grubhub) designed for campus dining.  
 It allows **students/customers** to browse menus, add items to cart, pay securely, and track orders in real-time, while **admins** manage restaurants, menus, and order statuses.
