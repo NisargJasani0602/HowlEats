@@ -1,0 +1,34 @@
+.logo {
+    margin-right: 25px;
+}
+
+.menubar-right {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.active {
+    color: tomato !important;
+}
+
+.dropdown-menu li {
+    cursor: pointer;
+}
+
+.profile-btn {
+    padding: 0.35rem 0.75rem;
+    border-radius: 999px;
+    transition: all 0.2s ease;
+}
+
+.profile-btn:hover,
+.profile-btn:focus {
+    background-color: #f1f3f5;
+    border-color: #ced4da;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.05);
+}
+
+.profile-btn img {
+    object-fit: cover;
+}
