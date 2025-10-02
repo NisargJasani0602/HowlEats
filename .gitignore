@@ -2,6 +2,7 @@
 .env
 .env.local
 .env.*.local
+.DS_Store
 
 # Node / Vite artifacts
 node_modules/

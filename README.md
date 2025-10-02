@@ -131,22 +131,10 @@ Admin panel: `http://localhost:5174`
 
 ## 🔐 API Overview
 
-**Auth**
-- `POST /api/auth/register` — Register
-- `POST /api/auth/login` — Login, returns JWT
-
-**Food**
-- `GET /api/foods` — List items
-- `POST /api/foods` — Create (admin)
-
-**Cart**
-- `GET /api/cart` — Fetch cart
-- `POST /api/cart/items` — Add item
-
-**Orders**
-- `POST /api/orders/checkout` — Checkout (starts Razorpay flow)  
-- `GET /api/orders` — User’s orders  
-- `PUT /api/orders/{id}/status` — Update status (admin)
+- Core auth routes live under `/api/login` and `/api/register` (JWT returned at login).
+- Customer flows cover food browsing (`GET /api/foods`), cart management (`POST /api/cart`, `POST /api/cart/remove`), and checkout (`POST /api/orders/create`, `POST /api/orders/verify`).
+- Admin-only endpoints include food creation (`POST /api/foods`) and order management (`GET /api/orders/all`, `PATCH /api/orders/status/{orderId}`).
+- Detailed request/response bodies, status codes, and examples are available in [`API_DOCS.md`](API_DOCS.md).
 
 ---
 
