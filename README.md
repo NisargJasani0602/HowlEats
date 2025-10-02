@@ -140,21 +140,22 @@ Admin panel: `http://localhost:5174`
 
 ## 📸 Screenshots
 ### Home Page, Login Page & Explore Page
-![Home Page](images/home.png)
-![Login Page](images/login.png)
-![Explore Page](images/explore.png)
+<img src="images/home.png" alt="Home Page" width="500"/>
+<img src="images/login.png" alt="Login Page" width="500"/>
+<img src="images/explore.png" alt="Explore Page" width="500"/>
 
-### Cart & Checkout (with razorpay popup)
-![Cart](images/cart.png)
-![Checkout](images/checkout.png)
-![Payments](images/payment.png)
-![Payment Success](images/paymentSuccess.png)
-![User Order](images/userOrders.png)
+### Cart & Checkout (with Razorpay popup)
+<img src="images/cart.png" alt="Cart" width="500"/>
+<img src="images/checkout.png" alt="Checkout" width="500"/>
+<img src="images/payment.png" alt="Payments" width="500"/>
+<img src="images/paymentSuccess.png" alt="Payment Success" width="500"/>
+<img src="images/userOrders.png" alt="User Orders" width="500"/>
 
-### Admin dashboard
-![Add Food](images/addFood.png)
-![List Foods](images/listFoods.png)
-![List Orders](images/allOrders.png)
+### Admin Dashboard
+<img src="images/addFood.png" alt="Add Food" width="500"/>
+<img src="images/listFoods.png" alt="List Foods" width="500"/>
+<img src="images/allOrders.png" alt="List Orders" width="500"/>
+
 
 ---
 
