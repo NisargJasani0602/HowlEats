@@ -160,7 +160,7 @@ Admin panel: `http://localhost:5174`
 ![Cart](images/cart.png)
 ![Checkout](images/checkout.png)
 ![Payments](images/payment.png)
-![Payment Success](paymentSuccess/cart.png)
+![Payment Success](images/paymentSuccess.png)
 ![User Order](images/userOrders.png)
 
 ### Admin dashboard
