@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  howleats-api:
+    build: ./HowlEatsAPI
+    container_name: howleats-api
+    ports:
+      - "8080:8080"
+    env_file:
+      - ./HowlEatsAPI/.env
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://mongo:27017/howleatsdb
+    depends_on:
+      - mongo
+    restart: unless-stopped
+
+  mongo:
+    image: mongo:7.0
+    container_name: howleats-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus
+    container_name: howleats-prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./HowlEatsAPI/monitor/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    depends_on:
+      - howleats-api
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana
+    container_name: howleats-grafana
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+
+volumes:
+  mongo-data:
