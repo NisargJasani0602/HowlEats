@@ -35,42 +35,74 @@ It allows **students/customers** to browse menus, add items to cart, pay securel
 
 ```
 HowlEats/
-├── howleats/                # Customer-facing website
+├── howleats/                     # Customer-facing website (React + Vite)
 │   ├── src/
-│   │   ├── components/      # UI components (ExploreMenu, FoodDisplay, FoodItem, Header, Login, Register, etc.)
-│   │   ├── context/         # StoreContext (global state)
-│   │   ├── Cart/            # Cart page & styles
-│   │   ├── Contact/         # Contact page
-│   │   ├── ExploreFood/     # Food browsing
-│   │   ├── FoodDetails/     # Item detail page
-│   │   ├── Home/            # Homepage
-│   │   ├── MyOrders/        # Order history
-│   │   ├── PlaceOrder/      # Checkout flow
-│   │   ├── service/         # API services (authService, cartService, foodService)
-│   │   └── util/            # Utils (cartUtils, constants)
+│   │   ├── components/           # UI components (ExploreMenu, FoodDisplay, FoodItem, Header, Login, Register, etc.)
+│   │   ├── context/
+│   │   │   ├── StoreContext.jsx  # Global store context (auth, cart, etc.)
+│   │   │   ├── UserLocationContext.js   # Provides geolocation via browser API
+│   │   │   └── UserLocationContext.jsx  # Context provider wrapper for location state
+│   │   ├── pages/
+│   │   │   ├── Cart/             # Cart page
+│   │   │   ├── Contact/          # Contact page
+│   │   │   ├── ExploreFood/      # Food browsing page
+│   │   │   ├── FoodDetails/      # Item detail page
+│   │   │   ├── Home/             # Homepage
+│   │   │   ├── MyOrders/         # Order history
+│   │   │   ├── PlaceOrder/       # Checkout flow
+│   │   │   └── ViewRestaurants/  # Nearby Restaurants Map Page
+│   │   │       ├── ViewRestaurants.jsx  # Main map + carousel component
+│   │   │       └── ViewRestaurants.css  # Styling for map and carousel
+│   │   ├── service/
+│   │   │   ├── authService.js
+│   │   │   ├── cartService.js
+│   │   │   ├── foodService.js
+│   │   │   └── restaurantService.js  
+│   │   ├── util/              # Helper utilities (constants, cart utils, etc.)
+│   │   └── App.jsx, main.jsx, index.css
 │   └── vite.config.js
 │
-├── adminpanel/              # Admin dashboard
+├── adminpanel/                   # Admin dashboard
 │   ├── src/
-│   │   ├── components/      # Menubar, Sidebar
-│   │   ├── Pages/           # AddFood, ListFood, Orders
-│   │   ├── services/        # foodService.js
+│   │   ├── components/           # Menubar, Sidebar
+│   │   ├── Pages/                # AddFood, ListFood, Orders
+│   │   ├── services/             # foodService.js
 │   │   └── App.jsx
 │   └── vite.config.js
 │
-├── HowlEatsAPI/             # Spring Boot backend API
+├── HowlEatsAPI/                  # Spring Boot backend
 │   └── src/main/java/com/nhjasani/HowlEatsAPI/
-│       ├── config/          # AWS + Security config
-│       ├── controller/      # Auth, Cart, Food, Order, User
-│       ├── entity/          # Entities (Cart, Food, Order, User)
-│       ├── filters/         # JWT filters
-│       ├── io/              # DTOs (requests/responses)
-│       ├── repository/      # Repositories
-│       ├── service/         # Business logic
-│       ├── util/            # JwtUtil
+│       ├── config/               # AWS + Security config
+│       ├── controller/
+│       │   ├── AuthController.java
+│       │   ├── CartController.java
+│       │   ├── FoodController.java
+│       │   ├── OrderController.java
+│       │   ├── UserController.java
+│       │   └── RestaurantController.java  
+│       ├── entity/
+│       │   ├── CartEntity.java
+│       │   ├── FoodEntity.java
+│       │   ├── OrderEntity.java
+│       │   ├── UserEntity.java
+│       │   └── RestaurantEntity.java 
+│       ├── io/
+│       │   ├── CartRequest.java
+│       │   ├── CartResponse.java
+│       │   ├── RestaurantRequest.java     
+│       │   └── RestaurantResponse.java   
+│       ├── repository/
+│       │   └── RestaurantRepository.java  
+│       ├── service/
+│       │   ├── RestaurantService.java
+│       │   └── RestaurantServiceImpl.java 
+│       ├── util/
+│       │   └── GoogleMapsClient.java
 │       └── HowlEatsApiApplication.java
 │
-└── .env                     # Environment variables
+├── API_DOCS.md                    # Detailed endpoints
+├── README.md                      # Project overview, setup, and usage
+└── .env                           # Environment variables (AWS, Razorpay, Google API key)
 ```
 
 ---
@@ -134,6 +166,7 @@ Admin panel: `http://localhost:5174`
 - Core auth routes live under `/api/login` and `/api/register` (JWT returned at login).
 - Customer flows cover food browsing (`GET /api/foods`), cart management (`POST /api/cart`, `POST /api/cart/remove`), and checkout (`POST /api/orders/create`, `POST /api/orders/verify`).
 - Admin-only endpoints include food creation (`POST /api/foods`) and order management (`GET /api/orders/all`, `PATCH /api/orders/status/{orderId}`).
+- Fetch nearby restaurants by category `POST /api/restaurants/nearby`.
 - Detailed request/response bodies, status codes, and examples are available in [`API_DOCS.md`](API_DOCS.md).
 
 ---
