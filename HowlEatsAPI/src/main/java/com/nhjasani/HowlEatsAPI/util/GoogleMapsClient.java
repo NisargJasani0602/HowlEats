@@ -44,6 +44,11 @@ public class GoogleMapsClient {
             r.setCategory(category);
             r.setPhone(item.optString("formatted_phone_number", null));
             r.setPlaceId(item.getString("place_id"));
+            JSONArray photos = item.optJSONArray("photos");
+            if (photos != null && photos.length() > 0) {
+                String photoRef = photos.getJSONObject(0).optString("photo_reference", null);
+                r.setPhotoReference(photoRef);
+            }
             restaurantList.add(r);
         }
         return restaurantList;

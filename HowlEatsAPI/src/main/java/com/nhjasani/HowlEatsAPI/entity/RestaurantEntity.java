@@ -24,4 +24,5 @@ public class RestaurantEntity {
     private double rating;
     private String phone;
     private String placeId;  // from Google Maps
+    private String photoReference;
 }

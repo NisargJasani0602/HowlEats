@@ -35,6 +35,9 @@ const Menubar = () => {
             <Link className={active === 'explore' ? "nav-link fw-bold active" : "nav-link"} to="/explore" onClick={() => setActive('explore')}>Explore</Link>
             </li>
             <li className="nav-item">
+            <Link className={active === 'restaurants' ? "nav-link fw-bold active" : "nav-link"} to="/restaurants" onClick={() => setActive('restaurants')}>Explore Restaurants</Link>
+            </li>
+            <li className="nav-item">
             <Link className={active === 'contact-us' ? "nav-link fw-bold active" : "nav-link"} to="/contact" onClick={() => setActive('contact-us')}>Contact Us</Link>
             </li>
           </ul>

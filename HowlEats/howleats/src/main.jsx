@@ -7,13 +7,16 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/js/bootstrap.bundle.js'
 import 'bootstrap-icons/font/bootstrap-icons.css'
 import StoreContextProvider from './context/StoreContext.jsx'
+import UserLocationProvider from './context/UserLocationContext.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
-      <StoreContextProvider>
-        <App />
-      </StoreContextProvider>
+      <UserLocationProvider autoRequest>
+        <StoreContextProvider>
+          <App />
+        </StoreContextProvider>
+      </UserLocationProvider>
     </BrowserRouter>
   </StrictMode>
 )

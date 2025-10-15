@@ -18,6 +18,6 @@ public class RestaurantResponse {
     private double rating;
     private String phone;
     private String placeId;
-    // optional computed
+    private String photoReference;
     private Double distanceMeters; 
 }

@@ -40,6 +40,7 @@ public class RestaurantServiceImpl implements RestaurantService {
                 .rating(entity.getRating())
                 .phone(entity.getPhone())
                 .placeId(entity.getPlaceId())
+                .photoReference(entity.getPhotoReference())
                 .distanceMeters(distanceMeters(originLat, originLng, entity.getLatitude(), entity.getLongitude()))
                 .build();
     }

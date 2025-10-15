@@ -13,6 +13,7 @@ import Register from './components/Register/Register';
 import { ToastContainer} from 'react-toastify';
 import { useContext } from 'react';
 import { StoreContext } from './context/StoreContext';
+import ViewRestaurants from './pages/ViewRestaurants/ViewRestaurants';
 
 const App = () => {
   const { token } = useContext(StoreContext);
@@ -31,6 +32,7 @@ const App = () => {
         <Route path='/login' element={token ? <Home /> : <Login />}/>
         <Route path='/register' element={token ? <Home /> : <Register />}/>
         <Route path='/myorders' element={token ? <MyOrders /> : <Login />}/>
+        <Route path='/restaurants' element={<ViewRestaurants />}/>
       </Routes>
     </div>
   )
