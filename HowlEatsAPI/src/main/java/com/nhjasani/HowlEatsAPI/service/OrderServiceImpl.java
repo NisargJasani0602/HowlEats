@@ -36,6 +36,9 @@ public class OrderServiceImpl implements OrderService {
     @Autowired
     private CartRepository cartRepository;
 
+    @Autowired
+    private EmailService emailService;
+
     @Value("${razorpay_key}")
     private String RAZORPAY_KEY;
 
@@ -89,6 +92,38 @@ public class OrderServiceImpl implements OrderService {
         if("paid".equalsIgnoreCase(status)) {
             cartRepository.deleteByUserId(existingOrder.getUserId());
         }
+
+        // Compose email fields
+        String toEmail = existingOrder.getEmail();
+        String toName  = deriveNameFromEmailOrAddress(existingOrder); // fallback if you don't store names
+        String orderId = existingOrder.getId();
+        double total   = existingOrder.getAmount();
+        String address = existingOrder.getUserAddress();
+
+        try {
+            emailService.sendOrderConfirmation(
+                    toEmail,
+                    toName,
+                    orderId,
+                    total,
+                    address,
+                    existingOrder.getOrderedItems());
+        } catch (Exception e) {
+            // Don’t fail the order if email fails; just log it
+            logger.error("Failed to send order confirmation email for orderId={}", orderId, e);
+        }
+    }
+    
+    private String deriveNameFromEmailOrAddress(OrderEntity o) {
+        if (o.getEmail() != null && o.getEmail().contains("@")) {
+            return o.getEmail().substring(0, o.getEmail().indexOf('@'));
+        }
+        // if your userAddress is like "First Last 123 Main St ..." you could parse first two tokens:
+        if (o.getUserAddress() != null && !o.getUserAddress().isBlank()) {
+            String[] parts = o.getUserAddress().trim().split("\\s+");
+            if (parts.length >= 2) return parts[0] + " " + parts[1];
+        }
+        return "Customer";
     }
 
     @Override
